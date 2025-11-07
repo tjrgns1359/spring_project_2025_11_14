@@ -1,0 +1,114 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+#container{
+	max-width:1200px;
+	margin:20px auto;
+	padding:20px;
+	background-color:white;
+	box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+#menuAdmin{
+	padding:20px;
+	border:1px solid #ddd;
+	background-color:#f9f9f9;
+	border-radius:10px;
+}
+
+
+#menuAdminH2{
+	margin-bottom:20px;
+	font-size:22px;
+	color:#333;
+	border-bottom:2px solid #333;
+	padding-bottom:10px;
+}
+
+#menuList{
+	margin-top:20px;
+	padding:10px;
+	border:1px solid #ddd;
+	background-color:#fafafa;
+	border-radius:5px;
+	min-height:50px;
+}
+
+
+/*작성버튼 스타일*/
+#menuAdmin button{
+	padding:10px 20px;
+	border:none;
+	color:white;
+	background-color:#333;
+	border-radius:5px;
+	font-size:16px;
+	cursor:point;
+}
+
+#menuAdmin button:hover{
+	background-color:#555;
+}
+
+
+/*-- 🔽 [수정] 페이지네이션 및 검색창 스타일 (화살표 버튼 disabled 스타일 추가) */
+
+#pagination-container {
+		margin-top: 20px;
+	}
+	
+	#search-box {
+		display: flex;
+		justify-content: center;
+	}
+	#search-input {
+		border: 1px solid #ddd;
+		padding: 5px 10px;
+		border-radius: 4px;
+		font-size: 14px;
+	}
+	#search-button {
+		border: 1px solid #333;
+		background-color: #333;
+		color: white;
+		padding: 5px 10px;
+		margin-left: 5px;
+		cursor: pointer;
+		border-radius: 4px;
+	}
+	#search-button:hover {
+		background-color: #555;
+	}
+	
+	#pagination-buttons {
+		text-align: center;
+		margin-top: 15px;
+	}
+
+	.pagination-btn {
+		border: 1px solid #ddd;
+		padding: 5px 10px;
+		margin: 0 2px;
+		cursor: pointer;
+		background-color: white;
+		border-radius: 4px;
+	}
+	.pagination-btn:hover {
+		background-color: #f0f0f0;
+	}
+	.pagination-btn.active {
+		background-color: #333;
+		color: white;
+		border-color: #333;
+		cursor: default;
+	}
+	
+	/* 🔽 [추가] 화살표 버튼이 비활성화될 때의 스타일 */
+	.pagination-btn:disabled {
+		background-color: #f9f9f9;
+		color: #ccc;
+		cursor: not-allowed;
+		border-color: #eee;
+	}
