@@ -24,7 +24,7 @@ public class MenuRestController {
 	@Autowired
 	private MenuRestService menuRestService;
 	
-	// 🔽 [수정] getAllMenus 메서드 수정
+	// 🔽 [수정] getAllMenus 메서드 수정..
 	// 1. @RequestParam(value = "search", required = false) String search 파라미터 추가
 	@GetMapping("/menu/all")
 	public ResponseEntity<Map<String, Object>> getAllMenus(
