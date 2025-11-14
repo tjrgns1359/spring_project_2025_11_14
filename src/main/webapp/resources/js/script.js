@@ -71,7 +71,7 @@ function fetchMenus(page = 1, search = ''){    //기본 페이지는 1  ,기본 
 				`;
 				
 				
-				//[상세페이지 이동 이벤트 (조회수 반영 후)]
+				//[상세페이지 이동 이벤트 (조회수 반영 후)].
 				// 클릭 이벤트를 data-idx 속성을 사용하도록 변경
 				menuItem.querySelector(".menu-link").addEventListener('click',(event)=>{
 					event.preventDefault();
