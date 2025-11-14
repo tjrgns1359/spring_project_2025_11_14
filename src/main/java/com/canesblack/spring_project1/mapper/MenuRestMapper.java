@@ -11,11 +11,11 @@ import org.apache.ibatis.annotations.Update;
 
 import com.canesblack.spring_project1.entity.Menu;
 
-
+//menu 엔티티와 menu DB 테이블 사이의 통역사 역할을 수행.
 @Mapper
 public interface MenuRestMapper {
 	
-	// 🔽 [수정] getLists 메서드 수정
+	
 	// 1. @Param("search") String search 파라미터 추가
 	// 2. @Select 쿼리를 <script> 태그로 감싸 동적 SQL로 변경
 	// 3. <where> 태그와 <if> 태그를 사용해 검색 조건(title, content) 추가
@@ -33,7 +33,7 @@ public interface MenuRestMapper {
 	// search가 빈값일때 모든 게시글 반환 
 	
 	
-	// 🔽 [수정] getTotalCount 메서드 수정
+
 	// 1. @Param("search") String search 파라미터 추가
 	// 2. @Select 쿼리를 <script> 태그로 감싸 동적 SQL로 변경
 	// 3. getLists와 "동일한" <where> 조건을 추가 (이게 틀리면 페이지 계산이 망가짐)
@@ -48,21 +48,20 @@ public interface MenuRestMapper {
 	public int getTotalCount(@Param("search") String search);
 	
 	
-	// --- (이하 기존 코드 동일) ---
 	
-	@Insert("INSERT INTO backend_spring_project.menu(memID,title,content,writer,indate)VALUES(#{memID},#{title},#{content},#{writer},#{indate})")
+	@Insert("INSERT INTO backend_spring_project.menu(memID,title,content,writer,indate)VALUES(#{memID},#{title},#{content},#{writer},#{indate})") //새로운 게시글을 DB 메뉴 테이블에 추가
 	public void boardInsert(Menu menu);
 	
-	@Select("SELECT idx,memID,title,content,writer,indate,count FROM backend_spring_project.menu WHERE idx=#{idx}")
+	@Select("SELECT idx,memID,title,content,writer,indate,count FROM backend_spring_project.menu WHERE idx=#{idx}") //게시글 번호(idx)로 해당 글의 상세정보(모든 컬럼)를 조회하여 Menu 객체로 반환
 	public Menu boardContent(int idx);
 	
-	@Delete("DELETE FROM backend_spring_project.menu WHERE idx =#{idx}")
+	@Delete("DELETE FROM backend_spring_project.menu WHERE idx =#{idx}") //게시글 번호(idx)로 해당 게시글을 DB에서 삭제
 	public void boardDelete (int idx);
 	
-	@Update("UPDATE backend_spring_project.menu SET title=#{title},content=#{content},writer=#{writer} WHERE idx=#{idx}")
+	@Update("UPDATE backend_spring_project.menu SET title=#{title},content=#{content},writer=#{writer} WHERE idx=#{idx}") //게시글 번호(idx)로 해당 글의 제목, 내용, 작성자 정보를 수정
 	public void boardUpdate(Menu menu);
 	
-	@Update("UPDATE backend_spring_project.menu SET count=count+1 WHERE idx=#{idx}")
+	@Update("UPDATE backend_spring_project.menu SET count=count+1 WHERE idx=#{idx}") //해당 게시글 번호(idx)의 조회수(count)를 1 증가
 	public void boardCount(int idx);
 	
 }

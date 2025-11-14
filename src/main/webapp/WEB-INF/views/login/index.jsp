@@ -23,7 +23,7 @@
 			</c:if>
 			
 			<!-- localhost:8080/login으로 username=---&password=--- -->
-			<form action="${pageContext.request.contextPath}/login" method="post">
+			<form action="${pageContext.request.contextPath}/login" method="post"> 
 			
 			<!-- CSRF 토큰추가 -->
 				<input type="hidden"name="_csrf" value="${_csrf.token}">

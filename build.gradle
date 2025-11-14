@@ -22,7 +22,7 @@ dependencies {
 // Swagger 의존성 (springdoc-openapi)
 implementation'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
 
-// JSP 관련 의존성
+// JSP 관련 의존성( 스프링 부트는 기본적으로 JSP 지원하지 않기 때문에 관련 도구들을 직접 추가해야한다)
 
 implementation'org.apache.tomcat.embed:tomcat-embed-jasper'
 implementation'jakarta.servlet:jakarta.servlet-api:6.0.0'

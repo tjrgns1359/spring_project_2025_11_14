@@ -10,43 +10,50 @@
 <meta name="_csrf"content="${_csrf.token}">
 <meta name="_csrf_header"content="${_csrf.headerName}">
 
+<!-- 공통 CSS 링크 -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/header.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/footer.css">
+<!-- noticeAdd 전용 CSS 링크 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/noticeAdd/style.css">
 </head>
 <body>
 
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
 
-<!--javascript코드로 form태그의 acton기능을 대신하는 기능을 만들겁니다.
-일종의 restapi개발방식의 일부분이다. -->
 		<form id="menuForm">
-			<div id=container>
+			<div id="container"> 
 				<div id="menuAdmin">
 					<h2 id="menuAdminH2">공지사항 작성</h2>
-					<br>
-					<label for="memID">회원ID</label>
-					<input type="text" id="memID" name="memID" placeholder="회원아이디" maxlength="20" value=" ${username}" readonly>
-					<br>
-					<label for="title">제목</label>
-					<input type="text" id="title" name="title" placeholder="제목" maxlength="20" >
-					<br>
-					<label for="title">내용</label>
-					<input type="text" id="content" name="content" placeholder="내용" maxlength="50" >
-					<br>
-					<label for="title">작성자</label>
-					<input type="text" id="writer" name="writer" placeholder="작성자" maxlength="10" value="${writer}" readonly>
-					<br>
-					<input type="hidden" id="indate" name="indate" >
 					
+					<%-- 회원ID와 작성자를 묶는 상단 메타 그룹 --%>
+					<div class="form-meta-group">
+						<div class="meta-item">
+							<label for="memID">회원ID</label>
+							<input type="text" id="memID" name="memID" value="${username}" readonly>
+						</div>
+						<div class="meta-item">
+							<label for="writer">작성자</label>
+							<input type="text" id="writer" name="writer" value="${writer}" readonly>
+						</div>
+					</div>
+					<%-- 메타 그룹 종료 --%>
+
+					<label for="title">제목</label>
+					<input type="text" id="title" name="title" placeholder="제목을 입력하세요" maxlength="100"> 
+					<br>
+					
+					<label for="content">내용</label> 
+					<textarea id="content" name="content" placeholder="내용을 입력하세요" rows="15"></textarea>
+					<br>
+					
+					<input type="hidden" id="indate" name="indate" >
 					
 					<button type="button" id="buttonSubmit">확인</button>
 				</div>
 			</div>
 		</form>
 
-
-
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
-	
 	
 <script src="${pageContext.request.contextPath}/resources/js/noticeAdd/script.js"></script>
 </body>

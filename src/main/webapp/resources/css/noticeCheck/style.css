@@ -1,4 +1,7 @@
-*{
+@charset "UTF-8";
+
+/* [수정] body, html 리셋 */
+html, body {
 	margin:0;
 	padding:0;
 }
@@ -35,35 +38,61 @@ label{
 	font-weight:bold;
 }
 
-input[type="text"],textarea{
+/* 🔽 [추가] 상단 메타 정보 (회원ID, 작성자) 그룹 (noticeAdd와 동일) */
+.form-meta-group {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.meta-item {
+	width: 48%;
+}
+
+/* 🔽 [수정] readonly input/textarea 스타일
+   (noticeCheck 페이지는 모든 폼이 readonly입니다) */
+input[type="text"][readonly],
+textarea[readonly] {
 	width:100%;
 	padding:10px;
 	margin-bottom:20px;
 	border:1px solid #ddd;
 	border-radius:5px;
-	font-size:16px;
+	font-size:14px; 
 	box-sizing:border-box;
-	background-color:#f9f9f9;
+	background-color: #eee; /* 읽기 전용 회색 배경 */
+	color: #333; /* 👈 (수정) 옅은 글씨 대신 잘 보이도록 검은색 */
+	outline: none;
+	cursor: default;
 }
 
-input[type="text"]:focus,textarea:focus{
-	border-color:#007bff;
-	outline:none;
-	background-color:#fff;
+/* 🔽 [추가] textarea 전용 스타일 */
+textarea[readonly] {
+	height: 300px;
+	resize: none; /* 👈 읽기 전용이므로 크기 조절 금지 */
+	font-family: Arial, sans-serif;
 }
 
+/* 🔼 [수정] readonly 스타일 */
+
+
+/* 🔽 [수정] 버튼 컨테이너 스타일 (기존과 동일) */
 #buttonContainer{
 	display:flex;
-	justify-content:space-between;
+	justify-content:space-between; /* 👈 [수정] 버튼 2개를 양 끝으로 */
+	margin-top: 20px;
 }
 
 #buttonUpdate,#buttonDelete{
-	padding:10px 20px;
+	width: 15%; /* 👈 [추가] 버튼 크기 조절 */
+	padding:15px; /* 👈 [수정] padding 통일 */
 	border:none;
 	border-radius:5px;
 	font-size:16px;
 	cursor:pointer;
 }
+/* 🔼 [수정] 버튼 스타일 */
+
 
 #buttonUpdate{
 	background-color:orange;
@@ -76,12 +105,10 @@ input[type="text"]:focus,textarea:focus{
 }
 
 #buttonUpdate:hover{
-	background-color:#ffffb5;
-	color:white;
+	background-color:#ffc107;
 }
 
 
 #buttonDelete:hover{
-	background-color:#ff6060;
-	color:white;
+	background-color:#dc3545;
 }

@@ -28,7 +28,8 @@ import jakarta.servlet.http.HttpSession;
 
 @Configuration
 @EnableWebSecurity
-//SpringSecurity기능을 사용하려면 이 어노테이션을 써줘야한다.
+// JSP 파일,즉 문은 얼추 만들었는데 이 문을 누가 열 수 있는가,언제 열어야 하는가, 권한을 줘야하나 말아야하나 결정하는 기능 -> SecurityConfig
+//SpringSecurity기능을 사용하려면 이 어노테이션을 써줘야한다. 스프링시큐리티 기능을 활성화 할게! 라는 뜻 
 public class SecurityConfig {
 
 	@Bean
@@ -41,11 +42,11 @@ public class SecurityConfig {
 		//cors는 특정서버로만 데이터를 넘길수 있도록 설정할 수 잇씁니다. 
 		.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
 		//세션설정
-		.authorizeHttpRequests(authz->authz.requestMatchers("/","/loginPage","/logout","/noticeCheckPage","/registerPage","/menu/all")
+		.authorizeHttpRequests(authz->authz.requestMatchers("/","/loginPage","/logout","/noticeCheckPage","/registerPage","/menu/all") //누가 어디에 들어 갈 수 있는가? 권한 설정
 				.permitAll()
 				.requestMatchers(HttpMethod.POST,"/login","/register").permitAll()
-				.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
-				.requestMatchers("/noticeAddPage","/noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
+				.requestMatchers("/resources/**","/WEB-INF/**").permitAll() //로그인 안 한 사용자도 당연히 들어와야하는 페이지들은 permitAll로 다 열어줬다.
+				.requestMatchers("/noticeAddPage","/noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER") //글쓰기, 메뉴 수정 같은 기능은 ADMIN,MANAGER로 권한 있는 사용자만 접근
 				.requestMatchers(HttpMethod.POST,"/menu/add").hasAnyAuthority("ADMIN","MANAGER")
 				.requestMatchers(HttpMethod.POST,"/menu/update").hasAnyAuthority("ADMIN","MANAGER")
 				.requestMatchers(HttpMethod.DELETE,"/menu/delete").hasAnyAuthority("ADMIN","MANAGER")
@@ -54,14 +55,14 @@ public class SecurityConfig {
 		
 		
 		
-		.formLogin(
+		.formLogin(					//접근이 제한된 사용자들을 로그인 페이지로 보내라
 			//url을 작성해서 로그인페이지로 이동할때 
 			login->login.loginPage("/loginPage")
 			.loginProcessingUrl("/login")
-			.failureUrl("/loginPage?error=true")
+			.failureUrl("/loginPage?error=true")	//만약 로그인이 실패하면 ?error=ture 라는 꼬리표를 붙여서 보낸다. login.jsp에서 c:if 를 사용해 아이디 비번틀림 메시지를 보여준게 이것이다.
 			.usernameParameter("username")
 			.passwordParameter("password")
-			.successHandler(authenticationSuccessHandler())
+			.successHandler(authenticationSuccessHandler())	//로그인이 성공하면 그냥 메인페이지로 바로가는게 x , 일단 우리가만든 authenticationSuccessHandler()를 실행시켜라
 			.permitAll()
 			)
 		
@@ -82,7 +83,7 @@ public class SecurityConfig {
 	}
 	
 	@Bean
-	public AuthenticationSuccessHandler authenticationSuccessHandler() {
+	public AuthenticationSuccessHandler authenticationSuccessHandler() {	//로그인이 성공하면 단순히 페이지를 이동시키는게 아니라 세션에 중요한 정보들을 저장하는 작업을 추가했다.
 		return new SimpleUrlAuthenticationSuccessHandler(){
 			
 			@Override
@@ -92,24 +93,24 @@ public class SecurityConfig {
 				HttpSession session=request.getSession();//세션 기능을 가지고 온것
 				boolean isManager =authentication.getAuthorities().stream()
 						.anyMatch(grantedAuthoirity->
-						grantedAuthoirity.getAuthority().equals("ADMIN")||
+						grantedAuthoirity.getAuthority().equals("ADMIN")||		//권한체크
 						grantedAuthoirity.getAuthority().equals("MANAGER"));
 					if(isManager) {
-						session.setAttribute("MANAGER",true);
+						session.setAttribute("MANAGER",true);		//index.jsp에서 c:if로 true 일때 작성버튼 보여줄지 말지 결정하는 것임
 					}
 					session.setAttribute("username", authentication.getName());
 					//세션에다가 로그인한 아이디를 저장한다.
-					session.setAttribute("isAuthenticated",true);
+					session.setAttribute("isAuthenticated",true);	//마찬가지로 header.jsp에서 c:if로 로그인/로그아웃 버튼 보여줄지 말지 결정할때 
 					//세션에다가 로그인됬냐 여부를 저장
 					//request.getContextPath()=>localhost:8080
-					response.sendRedirect(request.getContextPath()+"/");
+					response.sendRedirect(request.getContextPath()+"/");		//모든 세션작업을 마친 후에 사용자를 메인페이지로 보낸다.
 					super.onAuthenticationSuccess(request, response, authentication);
 			}
 		};
 	}
 	
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	public PasswordEncoder passwordEncoder() {	//비밀번호를 암호화, Bean으로 등록해 프로젝트 전역에서  BCryptPasswordEncoder()암호화 방식을 쓸 수 있게
 		return new BCryptPasswordEncoder();
 	}
 	
@@ -118,7 +119,7 @@ public class SecurityConfig {
 	
 	
 	@Bean
-	public org.springframework.web.cors.CorsConfigurationSource corsCorsfiConfigurationSource() {
+	public org.springframework.web.cors.CorsConfigurationSource corsCorsfiConfigurationSource() {	//누구랑 대화할지 정하는 규칙. 주소가 다르더라도 이 주소에서 오는 요청은 믿을 수 있으니 허락해줘
 		CorsConfiguration configuration = new CorsConfiguration();
 		configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080","https://localhost:8080"));
 		//localhost:8080서버에서는 프론트에서 백엔드단 혹은 벡엔드단에서 프론트단인데 데이터를 주고받을수있게 만든것

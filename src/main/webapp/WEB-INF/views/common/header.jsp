@@ -15,7 +15,7 @@
 		CanesblackCafe
 	</div>
 	
-	<c:choose>
+	<c:choose>		<%-- c:choose태그를 써서 isAuthenticated라는 변수에 true값을 실어주면 로그아웃 버튼을 그렇지 않으면 로그인 버튼을  --%>
 		<c:when test="${isAuthenticated!=null&& isAuthenticated==true}">
 			<div style="float:right;">
 			<!-- localhost:8080/logout -->

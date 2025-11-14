@@ -1,4 +1,7 @@
-*{
+@charset "UTF-8";
+
+/* [수정] body, html 리셋 */
+html, body {
 	margin:0;
 	padding:0;
 }
@@ -35,7 +38,34 @@ label{
 	font-weight:bold;
 }
 
-input[type="text"],textarea{
+/* 🔽 [추가] 상단 메타 정보 (회원ID, 작성자) 그룹 */
+.form-meta-group {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.meta-item {
+	width: 48%;
+}
+
+/* 🔽 [추가] readonly input 스타일 (memID, writer용) */
+input[type="text"][readonly] {
+	width:100%;
+	padding:10px;
+	margin-bottom:20px;
+	border:1px solid #ddd;
+	border-radius:5px;
+	font-size:14px; 
+	box-sizing:border-box;
+	background-color: #eee; 
+	color: #777; 
+	outline: none;
+}
+
+/* 🔽 [추가] 일반 input과 textarea 스타일 (title, content용) */
+input[type="text"]:not([readonly]),
+textarea {
 	width:100%;
 	padding:10px;
 	margin-bottom:20px;
@@ -46,42 +76,45 @@ input[type="text"],textarea{
 	background-color:#f9f9f9;
 }
 
-input[type="text"]:focus,textarea:focus{
+/* 🔽 [추가] textarea 전용 스타일 */
+textarea {
+	height: 300px; 
+	resize: vertical; 
+	font-family: Arial, sans-serif;
+}
+
+
+input[type="text"]:not([readonly]):focus,
+textarea:focus{
 	border-color:#007bff;
 	outline:none;
 	background-color:#fff;
 }
+/* 🔼 [추가] 폼 스타일 (noticeAdd와 동일) */
 
+
+/* 🔽 [수정] '수정 완료' 버튼 스타일 */
 #buttonContainer{
 	display:flex;
-	justify-content:space-between;
+	justify-content: center; /* 👈 [수정] 버튼이 1개이므로 중앙 정렬 */
+	margin-top: 10px;
 }
 
-#buttonUpdate,#buttonDelete{
-	padding:10px 20px;
-	border:none;
-	border-radius:5px;
-	font-size:16px;
-	cursor:pointer;
-}
-
-#buttonUpdate{
-	background-color:orange;
-	color:white;
-}
-
-#buttonDelete{
-	background-color:red;
-	color:white;
+#buttonUpdate {
+	width: 50%; /* 👈 [수정] 버튼 1개를 100% 너비로 */
+	padding: 15px; /* 👈 [수정] padding 통일 */
+	border: none;
+	background-color: #007bff; /* 👈 [수정] 수정 완료는 파란색 계열로 */
+	color: white;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
 }
 
 #buttonUpdate:hover{
-	background-color:#ffffb5;
-	color:white;
+	background-color:#0056b3;
 }
 
+/* 🔼 [수정] 버튼 스타일 */
 
-#buttonDelete:hover{
-	background-color:#ff6060;
-	color:white;
-}
+/* (기존 #buttonDelete 스타일은 이 페이지에 필요 없으므로 제거됨) */

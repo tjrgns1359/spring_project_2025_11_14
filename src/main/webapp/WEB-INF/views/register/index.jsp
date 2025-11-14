@@ -33,9 +33,6 @@
 			<div class="input-group">
 				<button type="submit" class="register-button">회원가입</button>
 			</div>
-			<div class="login-link">
-				<a href="${pageContext.request.contextPath}/loginPage">이미 계정이 있으신가요?</a>
-			</div>
 		</form>
 	</div>
 </div>

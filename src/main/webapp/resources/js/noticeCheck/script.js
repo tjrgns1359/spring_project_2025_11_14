@@ -1,3 +1,4 @@
+
 document.getElementById("buttonUpdate").addEventListener('click',function(){
 	const idx=document.getElementById("idx").value;
 	window.location.href=`/noticeModifyPage?idx=${idx}`;

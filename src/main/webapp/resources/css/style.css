@@ -27,13 +27,51 @@
 	padding-bottom:10px;
 }
 
-#menuList{
-	margin-top:20px;
-	padding:10px;
-	border:1px solid #ddd;
-	background-color:#fafafa;
-	border-radius:5px;
-	min-height:50px;
+
+/* 🔽 공지사항 테이블 스타일 */
+.notice-table {
+	width: 100%;
+	margin-top: 20px;
+	border-collapse: collapse; /* 테이블 테두리 한 줄로 */
+	background-color: #ffffff;
+	border-radius: 5px;
+	overflow: hidden; /* 테두리 둥글게 적용 */
+	border: 1px solid #ddd; /* 테이블 전체 테두리 */
+}
+
+.notice-table thead tr {
+	background-color: #333;
+	color: white;
+	font-weight: bold;
+	border-bottom: 2px solid #555;
+}
+
+.notice-table th,
+.notice-table td {
+	padding: 12px 15px;
+	border-bottom: 1px solid #eee;
+	text-align: center;
+}
+
+/* 테이블 본문(tbody)의 제목(title)만 왼쪽 정렬 */
+.notice-table tbody td.menu-title {
+	text-align: left;
+}
+
+/* 테이블 본문(tbody)의 행(tr)에 마우스 올렸을 때 */
+.notice-table tbody tr:hover {
+	background-color: #f9f9f9;
+}
+
+/* 테이블 본문(tbody)의 제목 링크 스타일 */
+.menu-link {
+	text-decoration: none;
+	color: #333;
+	font-weight: 500;
+	cursor: pointer;
+}
+.menu-link:hover {
+	text-decoration: underline;
 }
 
 
@@ -45,7 +83,7 @@
 	background-color:#333;
 	border-radius:5px;
 	font-size:16px;
-	cursor:point;
+	cursor:pointer;
 }
 
 #menuAdmin button:hover{
@@ -53,7 +91,7 @@
 }
 
 
-/*-- 🔽 [수정] 페이지네이션 및 검색창 스타일 (화살표 버튼 disabled 스타일 추가) */
+/*-- 페이지네이션 및 검색창 스타일 --*/
 
 #pagination-container {
 		margin-top: 20px;
@@ -105,7 +143,6 @@
 		cursor: default;
 	}
 	
-	/* 🔽 [추가] 화살표 버튼이 비활성화될 때의 스타일 */
 	.pagination-btn:disabled {
 		background-color: #f9f9f9;
 		color: #ccc;
