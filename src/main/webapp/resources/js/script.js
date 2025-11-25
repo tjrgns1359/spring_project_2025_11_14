@@ -54,11 +54,9 @@ function fetchMenus(page = 1, search = ''){    //기본 페이지는 1  ,기본 
 			//[메뉴 리스트 동적 생성 & 렌더링(보이는 형태로)]	
 			// data.menus 배열을 순회
 			data.menus.forEach(menu=>{           //글이 있으면
-				// div -> tr (테이블 행)으로 변경
 				const menuItem=document.createElement('tr'); 
 				
 				
-				// innerHTML을 div 구조에서 td (테이블 셀) 구조로 변경
 				menuItem.innerHTML=`
 					<td class="menu-title">
 						<a href="#" class="menu-link" data-idx="${menu.idx}">
@@ -85,8 +83,8 @@ function fetchMenus(page = 1, search = ''){    //기본 페이지는 1  ,기본 
 			
 		//[페이지네이션 위치 계산함수]	
 		// 데이터 로드 성공 시, 슬라이더의 버튼 위치를 재계산 (현재 페이지를 중심으로 슬라이더가 너무 앞이나 뒤로 넘어가지 않게 "적절한 시작번호"를 계산하는 과정.)
-					let newStart = Math.max(1, data.currentPage - Math.floor(pageBlockSize / 2)); //예를들어 페이지 블록사이즈가 5 이기때문에 예시 10-2 =8 번부터 슬라이더 시작, 만약 계산값이 1보다 작으면 1부터 시작
-					newStart = Math.min(newStart, Math.max(1, data.totalPages - pageBlockSize + 1));// 총 20페이지라면 20-5 +1 =16, 슬라이더는 16부터 시작, 슬라이더 시작번호가 16보다 크면 16으로 고정
+					let newStart = Math.max(1, data.currentPage - Math.floor(pageBlockSize / 2)); //예를들어 페이지 블록사이즈가 5 이기때문에 예시 10-2 =8 번부터 슬라이더 시작, 만약 계산값이 1보다 작으면 1부터 시작(중심위치 조정)
+					newStart = Math.min(newStart, Math.max(1, data.totalPages - pageBlockSize + 1));// 총 20페이지라면 20-5 +1 =16, 슬라이더는 16부터 시작, 슬라이더 시작번호가 16보다 크면 16으로 고정 (끝위치 조정)
 					currentSlidingStart = newStart; //계산한 슬라이더 시작 번호를 변수에 저장
 					
 					renderPagination(data.totalPages, data.currentPage);			//슬라이더를 다시 새로 그리는 기능(페이지네이션 UI 렌더링)
@@ -110,7 +108,7 @@ function renderPagination(totalPages, currentPage) {
 	
 	if (totalPages === 0) return;
 
-	// 1. 슬라이더의 시작/끝 페이지 계산
+	// 1. 슬라이더의 시작/끝 페이지 
 	
 	let startPage = currentSlidingStart;	//위에서 구한 시작점을 가져옴
 	let endPage = Math.min(startPage + pageBlockSize - 1, totalPages); //슬라이더 블록의 마지막 페이지 번호 계산, totalPagees를 넘지 않게 

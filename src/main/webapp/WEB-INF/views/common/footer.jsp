@@ -11,6 +11,5 @@
 <p style="color:white;text-align:center;">2025 Canesblack Cafe. All rights reserved</p>
 </div>
 
-
 </body>
 </html>

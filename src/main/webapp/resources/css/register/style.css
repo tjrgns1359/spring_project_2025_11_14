@@ -1,71 +1,120 @@
-*{
+@charset "UTF-8";
+
+
+html, body {
 	margin:0;
 	padding:0;
-}
-
-
-body{
-	background-color:#f4f4f4;
-	justify-content:center;
-	align-items:center;
-	height:100vh;
+	background-color:#f4f7f6; /* 배경색 변경 */
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 #register-container-wrapper{
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	height:90vh;
+	flex-grow: 1; /* header/footer를 제외한 영역을 채움 */
+	padding: 40px 0; /* 상하 여백 */
 }
 
 .register-container{
 	background-color:white;
-	padding:20px;
-	border-radius:5px;
-	box-shadow:0 2px 10px rgba(0,0,0,0.3);
-	width:300px;
+	padding: 40px; /* 패딩 증가 */
+	border-radius: 8px; /* 둥근 모서리 */
+	box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* 그림자 개선 */
+	width: 400px; /* 폼 너비 확장 */
 	text-align:center;
 }
 
 h2{
-	margin-bottom:20px;
+	margin-bottom: 30px; /* 여백 증가 */
 	color:#333;
+	font-size: 24px; /* 폰트 크기 */
 }
 
 .input-group{
-	margin-bottom:15px;
+	margin-bottom: 20px; /* 여백 증가 */
 	text-align:left;
 }
 
 
 .input-group label{
 	display:block;
-	margin-bottom:5px;
-	font-weight:bold;
+	margin-bottom: 8px; /* 여백 증가 */
+	font-weight: 600; /* 폰트 굵기 */
 	color:#555;
+	font-size: 14px;
 }
 
 
-.input-group input{
+
+.input-group input[type="text"],
+.input-group input[type="password"],
+.input-group input[type="tel"] 
+{
 	width:100%;
-	padding:8px;
+	padding: 12px 15px; /* 패딩 증가 (높이감) */
 	box-sizing:border-box;
 	border:1px solid #ddd;
-	border-radius:3px;
-	font-size:14px;
+	border-radius: 5px; /* 둥근 모서리 */
+	font-size: 14px;
+	transition: border-color 0.3s ease;
 }
+
+
+.input-group input[type="text"]:focus,
+.input-group input[type="password"]:focus,
+.input-group input[type="tel"]:focus {
+	border-color: #007bff;
+	outline: none;
+}
+
+/* readonly input 스타일 */
+.input-group input[readonly] {
+	background-color: #f0f0f0;
+	cursor: not-allowed;
+}
+
+/* 우편번호 찾기 그룹 스타일 */
+.postcode-group {
+	display: flex;
+	align-items: flex-end; /* label과 높이 맞춤 */
+}
+.postcode-group input {
+	flex-grow: 1; /* input이 남은 공간 다 차지 */
+	margin-right: 10px;
+}
+#btn-postcode {
+	padding: 12px 15px;
+	border: 1px solid #555;
+	background-color: #555;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	white-space: nowrap; /* "주소 검색" 줄바꿈 방지 */
+	transition: background-color 0.3s ease;
+}
+#btn-postcode:hover {
+	background-color: #333;
+}
+/* 우편번호 그룹 */
 
 
 .register-button{
 	width:100%;
-	padding:10px;
+	padding: 15px; /* 패딩 증가 */
 	background-color:#007bff;
 	color:white;
 	border:none;
-	border-radius:3px;
-	font-size:16px;
+	border-radius: 5px; /* 둥근 모서리 */
+	font-size: 16px;
+	font-weight: bold;
 	cursor:pointer;
 	transition:background-color 0.3s ease;
+	margin-top: 10px; /* 상단 여백 */
 }
 
 
@@ -73,8 +122,16 @@ h2{
 	background-color:#0056b3;
 }
 
+/* 구분선 스타일 */
+.divider {
+	border: 0;
+	border-top: 1px solid #eee;
+	margin: 25px 0;
+}
+
 .login-link{
-	margin-top:15px;
+	margin-top: 20px; /* 여백 증가 */
+	font-size: 14px;
 }
 
 .login-link a{
@@ -84,4 +141,14 @@ h2{
 
 .login-link a:hover{
 	text-decoration:underline;
+}
+
+/* 비밀번호 불일치 에러 메시지 스타일 */
+.error-message {
+	color: #dc3545; /* 빨간색 */
+	font-size: 13px;
+	text-align: left;
+	margin-top: -15px; /* input-group의 여백을 덮음 */
+	margin-bottom: 15px;
+	display: none; /* 기본은 숨김 */
 }

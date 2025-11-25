@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* [수정] body, html 리셋 */
+
 html, body {
 	margin:0;
 	padding:0;
@@ -38,7 +38,7 @@ label{
 	font-weight:bold;
 }
 
-/* 🔽 [추가] 상단 메타 정보 (회원ID, 작성자) 그룹 (noticeAdd와 동일) */
+/* 상단 메타 정보 (회원ID, 작성자) 그룹 (noticeAdd와 동일) */
 .form-meta-group {
 	display: flex;
 	justify-content: space-between;
@@ -49,7 +49,7 @@ label{
 	width: 48%;
 }
 
-/* 🔽 [수정] readonly input/textarea 스타일
+/* readonly input/textarea 스타일
    (noticeCheck 페이지는 모든 폼이 readonly입니다) */
 input[type="text"][readonly],
 textarea[readonly] {
@@ -61,22 +61,22 @@ textarea[readonly] {
 	font-size:14px; 
 	box-sizing:border-box;
 	background-color: #eee; /* 읽기 전용 회색 배경 */
-	color: #333; /* 👈 (수정) 옅은 글씨 대신 잘 보이도록 검은색 */
+	color: #333; /* 옅은 글씨 대신 잘 보이도록 검은색 */
 	outline: none;
 	cursor: default;
 }
 
-/* 🔽 [추가] textarea 전용 스타일 */
+/* textarea 전용 스타일 */
 textarea[readonly] {
 	height: 300px;
 	resize: none; /* 👈 읽기 전용이므로 크기 조절 금지 */
 	font-family: Arial, sans-serif;
 }
 
-/* 🔼 [수정] readonly 스타일 */
+/* readonly 스타일 */
 
 
-/* 🔽 [수정] 버튼 컨테이너 스타일 (기존과 동일) */
+/* 버튼 컨테이너 스타일 (기존과 동일) */
 #buttonContainer{
 	display:flex;
 	justify-content:space-between; /* 👈 [수정] 버튼 2개를 양 끝으로 */
@@ -91,7 +91,7 @@ textarea[readonly] {
 	font-size:16px;
 	cursor:pointer;
 }
-/* 🔼 [수정] 버튼 스타일 */
+/*  버튼 스타일 */
 
 
 #buttonUpdate{

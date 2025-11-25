@@ -1,32 +1,19 @@
-/* [수정] 
-- "위쪽 여백" 문제(Problem 2)를 해결하기 위해,
-  중첩된 body 태그에 적용될 CSS Reset을 * 대신 html, body로 명확히 지정합니다.
-*/
+/* CSS Reset: html, body 기본 여백 제거 */
 html, body {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-#header{
-	height: 70px;
-	background-color: #333;
-	color: white;
-	padding: 20px; 
-	font-weight: bold;
-	width: 100%;
-	position: sticky;
-	top: 0;
-	
-	/* [수정] position: fixed -> position: sticky
-	- 'sticky'는 'fixed'와 달리, 원래 자신의 공간(총 높이)을 유지합니다.
-	- 따라서 컨텐츠가 뒤로 숨는 문제가 아예 발생하지 않습니다.
-	- 스크롤 시 상단(top: 0)에 찰싹 붙습니다.
-	*/
-
-	
-	/* [추가] padding이 width: 100%를 넘어가지 않도록 보장 (가로 스크롤 방지) */
-	box-sizing: border-box; 
-	
-	/* [추가] 다른 요소들보다 항상 위에 있도록 z-index 설정 */
-	z-index: 1000; 
+/* 헤더 스타일 */
+#header {
+    height: 70px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+    width: 100%;
+    position: sticky; /* 스크롤 시 상단에 고정 */
+    top: 0;
+    box-sizing: border-box; /* padding이 width를 넘지 않도록 보장 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
 }

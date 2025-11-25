@@ -126,7 +126,7 @@ public class SecurityConfig {
 		configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
 		configuration.setAllowedHeaders(Arrays.asList("Authorization","Content-Type"));
 		org.springframework.web.cors.UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", configuration);
+		source.registerCorsConfiguration("/**", configuration); //모든 URL에 대해 설정한 CORS 귲칙을 적용하겠다.
 		return source;
 	}
 }

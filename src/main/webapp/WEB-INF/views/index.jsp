@@ -11,12 +11,12 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/header.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/footer.css">
-<link rel="stylesheet"type="text/css"href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
 
 </head>
 <body>
 
-<%@include file="/WEB-INF/views/common/header.jsp" %>    <%-- include 라는 jsp 태그로 헤더 조립 --%>
+<%@include file="/WEB-INF/views/common/header.jsp" %>    
 
 <div id="container">
 	<div id="menuAdmin">
@@ -37,7 +37,8 @@
 				</tr>
 			</thead>
 			
-			<%-- script.js가 테이블 본문(tbody)을 타겟팅할 수 있도록, tbody에 id="menuList"를 부여한다. --%>
+			<%-- 테이블 본문(tbody) --%>
+			
 			<tbody id="menuList">
 				<%-- (script.js가 채울 것) --%>
 			</tbody>
@@ -49,13 +50,13 @@
 		<%-- 페이지네이션 컨테이너 구조 --%>
 		<div id="pagination-container">
 			
-			<!-- 1. 검색창 -->
+			<!--  검색창 -->
 			<div id="search-box">
 				<input type="text" id="search-input" placeholder="제목 + 내용 검색">
 				<button type="button" id="search-button">검색</button>
 			</div>
 			
-			<!-- 2. 페이지 버튼 -->
+			<!--  페이지 버튼 -->
 			<div id="pagination-buttons">
 				<%-- (script.js가 채울 것) --%>
 			</div>
@@ -64,7 +65,7 @@
 	</div>
 </div>
 
-<%@include file="/WEB-INF/views/common/footer.jsp" %>      <%-- include 라는 jsp 태그로 푸터 조립 --%>
+<%@include file="/WEB-INF/views/common/footer.jsp" %>     
 
 <script type="text/javascript"src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 </body>

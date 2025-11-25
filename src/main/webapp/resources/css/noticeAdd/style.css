@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* [수정] body, html 리셋 (헤더 고정 시 필요했던 코드) */
+
 html, body {
 	margin:0;
 	padding:0;
@@ -38,7 +38,7 @@ label{
 	font-weight:bold;
 }
 
-/* 🔽 [추가] 상단 메타 정보 (회원ID, 작성자) 그룹 */
+
 .form-meta-group {
 	display: flex;
 	justify-content: space-between; /* 양쪽 끝으로 배치 */
@@ -49,21 +49,21 @@ label{
 	width: 48%; /* 절반보다 약간 작게 */
 }
 
-/* 🔽 [수정] readonly input 스타일을 분리 */
+/* readonly input 스타일을 분리 */
 input[type="text"][readonly] {
 	width:100%;
 	padding:10px;
 	margin-bottom:20px;
 	border:1px solid #ddd;
 	border-radius:5px;
-	font-size:14px; /* 👈 (수정) readonly는 글자 크기 작게 */
+	font-size:14px; /* readonly는 글자 크기 작게 */
 	box-sizing:border-box;
-	background-color: #eee; /* 👈 (수정) readonly는 회색 배경 */
-	color: #777; /* 👈 (수정) readonly는 옅은 글씨 */
+	background-color: #eee; /* readonly는 회색 배경 */
+	color: #777; /*  readonly는 옅은 글씨 */
 	outline: none;
 }
 
-/* 🔽 [수정] 일반 input과 textarea 스타일 */
+/* 일반 input과 textarea 스타일 */
 input[type="text"]:not([readonly]),
 textarea {
 	width:100%;
@@ -76,11 +76,11 @@ textarea {
 	background-color:#f9f9f9;
 }
 
-/* 🔽 [추가] textarea 전용 스타일 */
+/*  textarea 전용 스타일 */
 textarea {
-	height: 300px; /* 👈 높이 대폭 증가 */
-	resize: vertical; /* 👈 세로로만 크기 조절 가능 */
-	font-family: Arial, sans-serif; /* 👈 폰트 지정 */
+	height: 300px; /*  높이 대폭 증가 */
+	resize: vertical; /*  세로로만 크기 조절 가능 */
+	font-family: Arial, sans-serif; /*  폰트 지정 */
 }
 
 
@@ -90,7 +90,7 @@ textarea:focus{
 	outline:none;
 	background-color:#fff;
 }
-/* 🔼 [수정] 포커스 스타일 */
+/*  포커스 스타일 */
 
 
 #buttonSubmit{

@@ -19,7 +19,6 @@
 			<!-- 로그인 실패시 오류 메시지 표시 -->
 			<c:if test="${not empty param.error}" > 
 				<p style="color:red;">아이디 또는 비밀번호가 잘못되었습니다.</p>
-			
 			</c:if>
 			
 			<!-- localhost:8080/login으로 username=---&password=--- -->

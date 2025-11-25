@@ -10,10 +10,9 @@
 <meta name="_csrf"content="${_csrf.token}">
 <meta name="_csrf_header"content="${_csrf.headerName}">
 
-<!-- 공통 CSS 링크 -->
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/header.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/footer.css">
-<!-- noticeAdd 전용 CSS 링크 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/noticeAdd/style.css">
 </head>
 <body>

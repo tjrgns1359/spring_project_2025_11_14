@@ -10,10 +10,9 @@
 <meta name="_csrf"content="${_csrf.token}">
 <meta name="_csrf_header"content="${_csrf.headerName}">
 
-<!-- 공통 CSS 링크 -->
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/header.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/footer.css">
-<!-- 이 페이지 전용 CSS 링크 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/noticeModify/style.css">
 </head>
 <body>
@@ -61,7 +60,6 @@
 
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 	
-	<!-- javascript파일 -->
 <script src="${pageContext.request.contextPath}/resources/js/noticeModify/script.js"></script>
 </body>
 </html>

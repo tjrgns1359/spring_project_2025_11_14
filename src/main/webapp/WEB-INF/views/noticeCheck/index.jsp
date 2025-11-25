@@ -10,10 +10,9 @@
 <meta name="_csrf"content="${_csrf.token}">
 <meta name="_csrf_header"content="${_csrf.headerName}">
 
-<!-- 공통 CSS 링크 -->
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/header.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/footer.css">
-<!-- 이 페이지 전용 CSS 링크 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/noticeCheck/style.css">
 </head>
 <body>
@@ -28,6 +27,8 @@
 					
 					<input type="hidden" id="idx" name="idx" value="${menu.idx}">
 					<input type="hidden" id="indate" name="indate" value="${menu.indate}" >
+					
+					
 					
 					<%-- 회원ID와 작성자를 묶는 상단 메타 그룹 --%>
 					<div class="form-meta-group">
@@ -63,7 +64,6 @@
 
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 	
-	<!-- javascript파일 -->
 <script src="${pageContext.request.contextPath}/resources/js/noticeCheck/script.js"></script>
 
 </body>
